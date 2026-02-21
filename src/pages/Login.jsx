@@ -1,21 +1,22 @@
+import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 
 const Login = () => {
   return (
-    <div>
-        <h1>Login</h1>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="username">User name</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Enter your user name"
-            autoComplete="username"
-          />
-          <button type="submit">Sign in</button>
-        </form>
-    </div>
+    <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:4, marginTop:10}}>
+
+      <Typography variant='h4' component='h1' sx={{color:'#1976d2', fontWeight:'bold'}}>
+        Login
+        </Typography>
+
+        <TextField label='Username' variant='outlined' sx={{width:'300px'}}/>
+        <TextField label='Password' variant='outlined' type='password' sx={{width:'300px'}}/>
+
+        <Button variant='contained' color='primary' sx={{backgroundColor:'#1976d2', '&:hover': {backgroundColor:'#1565c0', width:'fit-content'}}}>  
+          Login
+        </Button>  
+        
+    </Box>
   )
 }
 

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router'
 const AppLayout = () => {
   return (
     <>
-      <div style={{
+      <header style={{
         display: 'flex',
         justifyContent: 'flex-end', 
         width: '100%',
@@ -14,8 +14,14 @@ const AppLayout = () => {
         position: 'fixed',
         top:0}}>
         <Navbar />
-      </div>
+      </header>
+      <section style={{
+        width: '100vw',
+        height: '100vh',
+        paddingTop:'60px'
+      }}>
       <Outlet />
+      </section>
     </>
   );
 }
