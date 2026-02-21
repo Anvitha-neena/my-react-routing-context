@@ -1,7 +1,33 @@
 import { Box, Button, TextField } from '@mui/material'
-import React from 'react'
+import React,{useState} from 'react'
+import { useNavigate } from "react-router";
 
 const ChangePassword = () => {
+  const [newPassword, setNewPassword] = React.useState('')
+  const [confirmPassword, setConfirmPassword] = React.useState('')
+  const navigate = useNavigate();
+  const handleChange=(e,type)=>{
+    switch(type){
+      case 'newPassword': 
+        setNewPassword(e.target.value)
+        break;
+      case 'confirmPassword':
+        setConfirmPassword(e.target.value)
+        break;
+      default:
+        break;
+    }
+  }
+
+  const handleChangePassword = (e) => {
+    e.preventDefault()  
+    if(newPassword === confirmPassword){
+      alert('Password changed successfully')
+      navigate("/dashboard");
+    }else{
+      alert('Password does not match')
+    }
+  }
   return (
     <Box sx={{
         display:'flex', flexDirection:'column', gap:2, width:'300px', border:'1px solid black', padding:4,
@@ -10,15 +36,15 @@ const ChangePassword = () => {
 
     }}>
         <TextField variant='filled' label='Old Password'
-        type='password'/>
+        type='password' value={9999} disabled/>
         <TextField variant='standard' label='New Password'
-        type='password'/>
+        type='password' onChange={e=>handleChange(e,'newPassword')}/>
         <TextField variant='outlined' label='Retype Password'
-        type='password'/>
+        type='password' onChange={e=>handleChange(e,'confirmPassword')}/>
 
         <Button variant='contained' color='primary'
             sx={{marginTop:2, backgroundColor:'#1976d2', '&:hover': {backgroundColor:'#1565c0', width:'fit-content', alignSelf:'center'}}}
-        >Change Password</Button>
+        onClick={handleChangePassword}>Change Password</Button>
         
     </Box>
   )
